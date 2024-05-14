@@ -1,0 +1,68 @@
+version: "3"
+
+
+services:
+
+  db:
+    image: postgres:alpine
+
+    restart: always
+
+    ports:
+      - 11002:5432
+
+    env_file: .env.local
+
+    logging:
+      driver: local
+      options:
+        max-size: "100m"
+
+  be:
+    image: prop_be
+    build: ./backend/
+    command: sh -c "python --version && service ssh start && uvicorn main:app --reload --host 0.0.0.0 --port 11001"
+    # entrypoint: sh -c "service ssh start && sleep infinity"
+    restart: always
+
+    ports:
+      - 11001:11001
+      - 11011:22
+
+    env_file: .env.local
+
+    working_dir: /app/
+    volumes:
+      - ./backend/app:/app:Z
+      - ./.env.local:/env/.env.local:ro
+
+    logging:
+      driver: local
+      options:
+        max-size: "100m"
+
+  fe:
+    image: prop_fe
+    build: ./frontend/
+
+    entrypoint: sh -c "service ssh start && sleep infinity"
+  #   command: nodemon index.js -L #npm run dev
+    restart: always
+
+    ports: 
+      - 11000:11000
+      - 11010:22
+    working_dir: /app
+    volumes:
+      - ./frontend/app:/app:Z
+
+    logging:
+      driver: local
+      options:
+        max-size: "100m"
+
+
+networks:
+  default:
+    name: prop
+    driver: bridge

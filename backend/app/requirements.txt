@@ -1,0 +1,17 @@
+uvicorn
+fastapi
+requests
+python-dateutil
+pytz
+pandas
+websockets
+SQLAlchemy
+psycopg2-binary
+python-multipart
+python-dotenv
+sqlalchemy_utils
+python-jose[cryptography]
+passlib[bcrypt]
+sqlmodel
+# rfc3339
+# pydgraph

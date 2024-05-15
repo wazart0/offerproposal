@@ -13,5 +13,3 @@ sqlalchemy_utils
 python-jose[cryptography]
 passlib[bcrypt]
 sqlmodel
-# rfc3339
-# pydgraph

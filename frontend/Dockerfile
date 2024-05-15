@@ -1,4 +1,4 @@
-FROM node:21.6.2-bookworm
+FROM node:22-bookworm
 
 
 RUN apt-get update && apt-get install -y openssh-server 

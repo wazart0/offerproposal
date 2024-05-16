@@ -10,16 +10,20 @@ export default function Home() {
             <Image src="/logo.png" alt="Logo" width={40} height={40} />
           </a>
           <ul className="flex space-x-4 ml-8">
-            <li><a href="/">Home</a></li>
-            <li><a href="/viewer">Plan Viewer</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="/" className="hover:underline">Home</a></li>
+            <li><a href="/viewer" className="hover:underline">Offer Viewer</a></li>
+            <li><a href="/about" className="hover:underline">About</a></li>
+            <li><a href="/contact" className="hover:underline">Contact</a></li>
           </ul>
         </div>
         <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
           Sign In
         </button>
       </nav>
+
+      asdffg
+
+      asd 45783457
 
     </main>
   );

@@ -8,7 +8,7 @@ const nextConfig = {
     // Enable polling based on env variable being set
     if(process.env.NEXT_WEBPACK_USEPOLLING) {
       config.watchOptions = {
-        poll: 5000,
+        poll: 10000,
         aggregateTimeout: 300
       }
     }

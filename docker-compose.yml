@@ -45,7 +45,8 @@ services:
     image: prop_fe
     build: ./frontend/
 
-    entrypoint: sh -c "service ssh start && sleep infinity"
+    # entrypoint: sh -c "service ssh start && sleep infinity"
+    entrypoint: sh -c "service ssh start && npm run dev"
   #   command: nodemon index.js -L #npm run dev
     restart: always
 

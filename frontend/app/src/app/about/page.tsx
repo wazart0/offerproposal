@@ -1,6 +1,6 @@
-import Image from "next/image";
+import React from "react";
 
-import Navbar from "./components/navbar";
+import Navbar from "../components/navbar";
 
 export default () => {
   return (
@@ -8,9 +8,7 @@ export default () => {
 
       <Navbar />
 
-      asdffg
-
-      asd 45783457
+      fill about section
 
     </main>
   );

@@ -1,27 +1,15 @@
 import React from "react";
 import Image from "next/image";
 
+import Navbar from "../components/navbar";
 
-export default function Contact() {
+
+export default () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-5">
       
-      <nav className="flex items-center justify-between w-full mb-8">
-        <div className="flex items-center">
-          <a href="/">
-            <Image src="/logo.png" alt="Logo" width={40} height={40} />
-          </a>
-          <ul className="flex space-x-4 ml-8">
-            <li><a href="/" className="hover:underline">Home</a></li>
-            <li><a href="/viewer" className="hover:underline">Plan Viewer</a></li>
-            <li><a href="/about" className="hover:underline">About</a></li>
-            <li><a href="/contact" className="hover:underline">Contact</a></li>
-          </ul>
-        </div>
-        <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-          Sign In
-        </button>
-      </nav>
+
+      <Navbar />
 
       <form className="flex flex-col space-y-4">
         <div className="flex flex-col">

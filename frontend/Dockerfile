@@ -8,10 +8,11 @@ RUN echo "root:dev" | chpasswd
 
 WORKDIR /app
 
-# RUN apk add --no-cache npm
+COPY app/package.json ./package.json
+COPY app/package-lock.json ./package-lock.json
 
-# RUN npm install -g nodemon 
-# RUN npm install gantt rsuite --save
+RUN npm ci
+
 
 
 

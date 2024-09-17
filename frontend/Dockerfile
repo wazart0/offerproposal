@@ -11,7 +11,7 @@ WORKDIR /app
 COPY app/package.json ./package.json
 COPY app/package-lock.json ./package-lock.json
 
-RUN npm ci
+RUN npm install && npm ci
 
 
 

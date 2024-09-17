@@ -5,6 +5,10 @@ import { useSearchParams } from 'next/navigation'
 import Image from "next/image";
 
 import { marked } from 'marked';
+import customHeadingId from "marked-custom-heading-id";
+import mermaid from 'mermaid';
+// import markedCodeFormat from 'marked-code-format'
+import 'github-markdown-css'
 
 import AnyChart from 'anychart-react'
 import anychart from 'anychart'
@@ -12,8 +16,31 @@ import anychart from 'anychart'
 import Navbar from "../components/navbar";
 
 
+// const md = markdownit('commonmark')
+
+// Custom renderer for Mermaid
+// const renderer = new marked.Renderer();
+// renderer.code = function (code, language) {
+//   if (language === 'mermaid') {
+//     var log = '<div class="mermaid">\n' + code + '\n</div>'
+//     // console.log(log)
+//     return log
+//   } else {
+//     return '<pre class="' + language + '"><code>' + code + '</code></pre>';
+//   }
+// };
 
 
+// marked.use(
+//   markedCodeFormat({
+//     /* Prettier options */
+//   })
+// )
+
+// marked.setOptions({
+//   renderer,
+//   // other options if needed
+// });
 
 export default () => {
   const searchParams = useSearchParams()
@@ -25,13 +52,13 @@ export default () => {
 
 
 
-
   useEffect(() => {
     anychart.licenseKey("wazartur@gmail.com-68513cef-36eabd66");
 
     fetch('http://localhost:11001/offer?token=' + offerToken)
     .then((res) => res.json())
     .then((response) => {
+
     
       var gantt_data = null
       var html = null
@@ -42,6 +69,7 @@ export default () => {
           break
         }
         if (item.type == 'markdown') {
+          // marked.use(customHeadingId());
           html = marked.parse(item.data);
         }
       }
@@ -59,6 +87,14 @@ export default () => {
     })
     
   }, [])
+
+  // useEffect(() => {
+  //   console.log('mermaid render')
+  //   if (doc) {
+  //     mermaid.initialize({ startOnLoad: true });
+  //     mermaid.contentLoaded();
+  //   }
+  // }, [doc]);
 
   if (isLoading) return (
     <main className="flex min-h-screen flex-col items-center justify-center p-0">
@@ -82,7 +118,7 @@ export default () => {
         height={300}
       />
 
-      <div dangerouslySetInnerHTML={{__html: doc}} />                               
+      <div className="markdown-body" dangerouslySetInnerHTML={{__html: doc}} />                               
 
       test
 

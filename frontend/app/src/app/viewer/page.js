@@ -30,6 +30,7 @@ import Navbar from "../components/navbar";
 //   }
 // };
 
+marked.use(customHeadingId());
 
 // marked.use(
 //   markedCodeFormat({
@@ -69,7 +70,6 @@ export default () => {
           break
         }
         if (item.type == 'markdown') {
-          // marked.use(customHeadingId());
           html = marked.parse(item.data);
         }
       }

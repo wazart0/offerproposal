@@ -60,7 +60,7 @@ def get_baseline_predecessors(
         {
             'type': 'markdown',
             'data': '''
-# Project Plan
+# Project Plan  {#custom-id}
 
 ## Overview
 
@@ -68,7 +68,7 @@ This is a project plan for the development of a new product. The plan includes a
 
 ## Tasks
 
-Link to heading: ?
+Link to heading: [Heading IDs](#custom-id)
 
 List of tasks for the project:
 

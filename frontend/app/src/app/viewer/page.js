@@ -16,21 +16,6 @@ import anychart from 'anychart'
 import Navbar from "../components/navbar";
 
 
-// const md = markdownit('commonmark')
-
-// Custom renderer for Mermaid
-// const renderer = new marked.Renderer();
-// renderer.code = function (code, language) {
-//   if (language === 'mermaid') {
-//     var log = '<div class="mermaid">\n' + code + '\n</div>'
-//     // console.log(log)
-//     return log
-//   } else {
-//     return '<pre class="' + language + '"><code>' + code + '</code></pre>';
-//   }
-// };
-
-marked.use(customHeadingId());
 
 // marked.use(
 //   markedCodeFormat({
@@ -38,10 +23,46 @@ marked.use(customHeadingId());
 //   })
 // )
 
+
+// Custom renderer for Mermaid
+// marked.use({
+//   extensions: [{
+//     name: 'heading',
+//     renderer(token): {
+//       code: function (code) {
+//         if (code.lang == 'mermaid') return `<pre class="mermaid">${code.text}</pre>`;
+//         return `<pre>${code.text}</pre>`;
+//       }
+//     }
+//   }]
+// })
+
 // marked.setOptions({
 //   renderer,
 //   // other options if needed
 // });
+
+
+// marked.use({
+//   extensions: [{
+//       name: 'code',
+//       renderer(token) {
+//         // console.log(token)
+//         if (token.lang == 'mermaid') return `<pre className="language-mermaid">${token.text}</pre>`;
+//         return `<pre><code className="language-${token.lang}">${token.text}</code></pre>`;
+//       }
+//    }]
+//  })
+
+
+marked.use({
+  pedantic: false,
+  gfm: true,
+  breaks: false
+});
+
+marked.use(customHeadingId());
+
 
 export default () => {
   const searchParams = useSearchParams()
@@ -60,6 +81,8 @@ export default () => {
     .then((res) => res.json())
     .then((response) => {
 
+      
+    console.log('data retrieved')
     
       var gantt_data = null
       var html = null
@@ -88,13 +111,21 @@ export default () => {
     
   }, [])
 
-  // useEffect(() => {
-  //   console.log('mermaid render')
-  //   if (doc) {
-  //     mermaid.initialize({ startOnLoad: true });
-  //     mermaid.contentLoaded();
-  //   }
-  // }, [doc]);
+
+
+  useEffect(() => {
+    if (doc) {
+      console.log('run mermaid renderer')
+      // console.log(doc)
+      mermaid.initialize({ startOnLoad: false });
+      mermaid.run({
+        nodes: document.querySelectorAll('.language-mermaid'),
+      });
+      // mermaid.contentLoaded();
+    }
+  }, [doc]);
+
+
 
   if (isLoading) return (
     <main className="flex min-h-screen flex-col items-center justify-center p-0">
@@ -104,12 +135,16 @@ export default () => {
     </main>
   )
 
+  const mermaid_test = '---\ntitle: Node\n---\nflowchart LR\n    id'
+
+  
   return (
     <main className="flex min-h-screen flex-col items-left justify-between p-5">
       
       <Navbar />
 
       test
+
 
       
       <AnyChart
@@ -121,6 +156,8 @@ export default () => {
       <div className="markdown-body" dangerouslySetInnerHTML={{__html: doc}} />                               
 
       test
+
+      <pre className="language-mermaid">{mermaid_test}</pre>
 
     </main>
   );

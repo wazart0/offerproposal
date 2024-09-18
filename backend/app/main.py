@@ -55,7 +55,7 @@ def health() -> str:
 def get_baseline_predecessors(
         token: str
     ):
-    # time.sleep(5)
+    time.sleep(5)
     return [
         {
             'type': 'markdown',

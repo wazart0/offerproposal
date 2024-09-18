@@ -169,6 +169,11 @@ gantt
 ```
 
 
+```mermaid
+erDiagram
+	FOO ||--|{ BAR :baz
+```
+
                 '''
         },
         {

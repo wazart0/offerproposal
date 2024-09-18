@@ -24,24 +24,6 @@ import Navbar from "../components/navbar";
 // )
 
 
-// Custom renderer for Mermaid
-// marked.use({
-//   extensions: [{
-//     name: 'heading',
-//     renderer(token): {
-//       code: function (code) {
-//         if (code.lang == 'mermaid') return `<pre class="mermaid">${code.text}</pre>`;
-//         return `<pre>${code.text}</pre>`;
-//       }
-//     }
-//   }]
-// })
-
-// marked.setOptions({
-//   renderer,
-//   // other options if needed
-// });
-
 
 // marked.use({
 //   extensions: [{
@@ -139,7 +121,7 @@ export default () => {
 
   
   return (
-    <main className="flex min-h-screen flex-col items-left justify-between p-5">
+    <main className="flex min-h-screen flex-col items-center justify-between p-5">
       
       <Navbar />
 

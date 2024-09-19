@@ -83,6 +83,10 @@ List of tasks for the project:
     - test2
 
 2. jkjfk
+
+    1. asdf
+    2. asdfasd
+    
 3. nklj
 
 
@@ -94,6 +98,19 @@ List of tasks for the project:
 > :heart: **Note:** Sunrises are beautiful.
 
 > :tada: **Tip:** Remember to appreciate the little things in life.
+
+
+
+Here is a simple footnote[^1].
+
+A footnote can also have multiple lines[^2].
+
+
+> [!IMPORTANT]
+> Crucial information necessary for users to succeed.
+
+> [!WARNING]
+> Critical content demanding immediate user attention due to potential risks.
 
 
 
@@ -173,6 +190,79 @@ gantt
 erDiagram
 	FOO ||--|{ BAR :baz
 ```
+
+
+```mermaid
+zenuml
+    title Annotators
+    @Actor Alice
+    @Database Bob
+    Alice->Bob: Hi Bob
+    Bob->Alice: Hi Alice
+```
+
+
+!!! warning Ehh...
+some test `iwth` admonition
+!!!
+
+
+!!! info Publish ESM and CJS in a single package 
+In the past decade, due to the lack of a standard module system of `JavaScript`, **CommonJS** (a.k.a the `require('xxx')` and `module.exports` syntax) has been the way how Node.js and NPM packages work. Until 2015, when ECMAScript modules finally show up as the standard solution, the community start migrating to native ESM gradually.
+!!!
+
+
+| H1      | H2      | H3      |
+|---------|---------|---------|
+| This cell spans 3 columns |||
+
+
+| H1      | H2      | H3      |
+|---------|---------|---------|
+| This cell spans 2 columns || |
+
+| H1           | H2      |
+|--------------|---------|
+| This cell    | Cell A  |
+| spans three ^| Cell B  |
+| rows        ^| Cell C  |
+
+
+
+| This header spans two   || Header A |
+| columns *and* two rows ^|| Header B |
+|-------------|------------|----------|
+| Cell A      | Cell B     | Cell C   |
+
+
+
+```bash
+#!/bin/bash
+
+###### CONFIG
+ACCEPTED_HOSTS="/root/.hag_accepted.conf"
+BE_VERBOSE=false
+
+if [ "$UID" -ne 0 ]
+then
+ echo "Superuser rights required"
+ exit 2
+fi
+
+genApacheConf(){
+ echo -e "# Host ${HOME_DIR}$1/$2 :"
+}
+
+echo '"quoted"' | tr -d \" > text.txt
+```
+
+
+
+
+[^1]: My reference.
+[^2]: To add line breaks within a footnote, prefix new lines with 2 spaces.
+  This is a second line.
+  
 
                 '''
         },

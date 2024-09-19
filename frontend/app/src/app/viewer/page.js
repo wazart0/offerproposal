@@ -6,9 +6,22 @@ import Image from "next/image";
 
 import { marked } from 'marked';
 import customHeadingId from "marked-custom-heading-id";
+import markedAdmonition, { setConfig } from 'marked-admonition-extension';
 import mermaid from 'mermaid';
+import extendedTables from "marked-extended-tables/src/index.js";
+import markedAlert from 'marked-alert'
+import markedFootnote from 'marked-footnote';
+
+import {markedEmoji} from "marked-emoji";
+import {Octokit} from "@octokit/rest";
+
+import { markedHighlight } from "marked-highlight";
+import hljs from 'highlight.js';
+
 // import markedCodeFormat from 'marked-code-format'
 import 'github-markdown-css'
+import 'marked-admonition-extension/dist/index.css';
+import 'highlight.js/styles/github.css';
 
 import AnyChart from 'anychart-react'
 import anychart from 'anychart'
@@ -37,6 +50,13 @@ import Navbar from "../components/navbar";
 //  })
 
 
+// const octokit = new Octokit();
+// const res = await octokit.rest.emojis.get();
+const emojis = {
+  "warning": '⚠️',
+  // "tada": "https://...",
+}
+
 marked.use({
   pedantic: false,
   gfm: true,
@@ -44,7 +64,25 @@ marked.use({
 });
 
 marked.use(customHeadingId());
+marked.use(markedAdmonition);
+marked.use(extendedTables())
+marked.use(markedAlert())
+marked.use(markedFootnote())
 
+marked.use(
+  markedHighlight({
+    langPrefix: 'hljs language-',
+    highlight(code, lang, info) {
+      const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+      return hljs.highlight(code, { language }).value;
+    }
+  })
+)
+
+marked.use(markedEmoji({
+	emojis,
+	renderer: (token) => token.emoji//`<img alt="${token.name}" src="${token.emoji}" class="marked-emoji-img">`
+}));
 
 export default () => {
   const searchParams = useSearchParams()

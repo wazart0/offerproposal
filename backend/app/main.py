@@ -64,7 +64,7 @@ def get_baseline_predecessors(
 
 ## Overview
 
-This is a project plan for the development of a new product. The plan includes a list of tasks and a Gantt chart.
+This is a project plan for the development of a new product[^zxc]. The plan includes a list of tasks and a Gantt chart.
 
 ## Tasks
 
@@ -90,7 +90,7 @@ List of tasks for the project:
 3. nklj
 
 
-- cos tam
+- cos tam[^zxc]
 - jeszcze cos
             
 > :warning: **Warning:** Do not push the big red button.
@@ -260,8 +260,8 @@ echo '"quoted"' | tr -d \" > text.txt
 
 
 [^1]: My reference.
-[^2]: To add line breaks within a footnote, prefix new lines with 2 spaces.
-  This is a second line.
+[^2]: To add line breaks within a footnote, prefix new lines with 2 spaces. This is a second line.
+[^zxc]: jakis ref zxc.
   
 
                 '''
